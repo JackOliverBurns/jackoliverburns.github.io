@@ -6,6 +6,10 @@
     <title>Jack Burns | My Journey</title>
 
     <style>
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: Arial, sans-serif;
             background: #f4f6f8;
@@ -21,65 +25,131 @@
             padding: 60px 20px;
         }
 
-        header p {
-            margin: 8px 0;
-        }
+        header h1 { margin-bottom: 5px; }
 
         .intro {
-            max-width: 650px;
+            max-width: 600px;
             margin: 20px auto 0;
         }
 
-        .timeline {
-            max-width: 750px;
-            margin: 35px auto;
-            padding: 25px;
+        .journey {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 25px 20px;
             background: white;
             border-radius: 10px;
         }
 
-        h2 {
-            color: #14213d;
+        .journey > h2,
+        .journey > p {
+            text-align: center;
         }
 
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            margin: 12px 0;
-            border: 1px solid #e0e4e8;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #222;
-            transition: 0.2s;
+        h2 { color: #14213d; }
+
+        .vine {
+            position: relative;
+            max-width: 650px;
+            margin: 35px auto;
+            padding: 10px 0;
         }
 
-        .timeline-item:hover {
-            border-color: #0077cc;
-            background: #f7faff;
-            transform: translateX(4px);
-        }
-
-        .number {
-            background: #14213d;
-            color: white;
-            min-width: 38px;
-            height: 38px;
+        /* Main growing stem */
+        .vine::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 5px;
+            bottom: 5px;
+            width: 5px;
+            background: #668b55;
             border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .branch {
+            position: relative;
             display: flex;
+            width: 50%;
+            min-height: 110px;
             align-items: center;
-            justify-content: center;
-            font-weight: bold;
         }
 
-        .timeline-item strong {
+        .branch:nth-child(odd) {
+            margin-left: 50%;
+            padding-left: 30px;
+        }
+
+        .branch:nth-child(even) {
+            padding-right: 30px;
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        /* Small stems growing out from the main vine */
+        .branch::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 35px;
+            height: 4px;
+            background: #668b55;
+            border-radius: 5px;
+        }
+
+        .branch:nth-child(odd)::before {
+            left: -2px;
+            transform: rotate(-15deg);
+            transform-origin: left center;
+        }
+
+        .branch:nth-child(even)::before {
+            right: -2px;
+            transform: rotate(15deg);
+            transform-origin: right center;
+        }
+
+        .leaf {
+            position: relative;
             display: block;
-            color: #14213d;
+            width: 100%;
+            max-width: 270px;
+            padding: 15px;
+            border: 1px solid #dce5d7;
+            background: #f5f8f2;
+            color: #222;
+            text-decoration: none;
+            border-radius: 45% 12px 45% 12px;
+            transition: transform 0.2s, background 0.2s;
         }
 
-        .timeline-item small {
-            color: #666;
+        .branch:nth-child(even) .leaf {
+            border-radius: 12px 45% 12px 45%;
+        }
+
+        .leaf:hover,
+        .leaf:focus-visible {
+            background: #e7f0df;
+            border-color: #668b55;
+            transform: scale(1.03);
+            outline: 2px solid #668b55;
+            outline-offset: 2px;
+        }
+
+        .leaf strong {
+            display: block;
+            color: #284c2b;
+        }
+
+        .leaf small { color: #555; }
+
+        .leaf-number {
+            display: block;
+            color: #668b55;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
         }
 
         section.detail {
@@ -89,13 +159,14 @@
             background: white;
             border-radius: 10px;
             scroll-margin-top: 20px;
+            border-left: 4px solid #668b55;
         }
 
-        a {
-            color: #0077cc;
-        }
+        a { color: #0077cc; }
 
         .back {
+            display: inline-block;
+            margin-top: 10px;
             font-size: 14px;
             text-decoration: none;
         }
@@ -107,14 +178,48 @@
         }
 
         @media (max-width: 600px) {
-            header {
-                padding: 40px 15px;
+            header { padding: 40px 15px; }
+
+            .journey {
+                margin: 20px 10px;
+                padding: 20px 10px;
             }
 
-            .timeline, section.detail {
-                margin: 20px 12px;
-                padding: 20px;
+            .vine::before { left: 20px; }
+
+            .branch,
+            .branch:nth-child(odd),
+            .branch:nth-child(even) {
+                width: 100%;
+                margin-left: 0;
+                padding: 0 0 0 45px;
+                justify-content: flex-start;
+                text-align: left;
+                min-height: 100px;
             }
+
+            .branch::before,
+            .branch:nth-child(odd)::before,
+            .branch:nth-child(even)::before {
+                left: 20px;
+                right: auto;
+                width: 25px;
+                transform: rotate(-12deg);
+                transform-origin: left center;
+            }
+
+            .leaf,
+            .branch:nth-child(even) .leaf {
+                max-width: 100%;
+                border-radius: 12px;
+            }
+
+            section.detail { margin: 20px 12px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .leaf { transition: none; }
         }
     </style>
 </head>
@@ -136,57 +241,61 @@
 
 <main>
 
-    <div class="timeline">
+    <div class="journey">
         <h2>My Journey</h2>
-        <p>Select a chapter to explore it in more detail.</p>
+        <p>Follow the vine and choose a branch to explore my story.</p>
 
-        <a class="timeline-item" href="#about">
-            <span class="number">01</span>
-            <span>
-                <strong>About Me</strong>
-                <small>My interests and what motivates me</small>
-            </span>
-        </a>
+        <div class="vine">
 
-        <a class="timeline-item" href="#university">
-            <span class="number">02</span>
-            <span>
-                <strong>University</strong>
-                <small>Business Computing & Analytics at Bournemouth</small>
-            </span>
-        </a>
+            <div class="branch">
+                <a class="leaf" href="#about">
+                    <span class="leaf-number">CHAPTER 01</span>
+                    <strong>About Me</strong>
+                    <small>My interests and what motivates me</small>
+                </a>
+            </div>
 
-        <a class="timeline-item" href="#projects">
-            <span class="number">03</span>
-            <span>
-                <strong>Projects</strong>
-                <small>Turning ideas into practical solutions</small>
-            </span>
-        </a>
+            <div class="branch">
+                <a class="leaf" href="#university">
+                    <span class="leaf-number">CHAPTER 02</span>
+                    <strong>University</strong>
+                    <small>Business Computing at Bournemouth</small>
+                </a>
+            </div>
 
-        <a class="timeline-item" href="#experience">
-            <span class="number">04</span>
-            <span>
-                <strong>Work & Experience</strong>
-                <small>Learning through real-world experience</small>
-            </span>
-        </a>
+            <div class="branch">
+                <a class="leaf" href="#projects">
+                    <span class="leaf-number">CHAPTER 03</span>
+                    <strong>My Projects</strong>
+                    <small>Ideas brought to life with technology</small>
+                </a>
+            </div>
 
-        <a class="timeline-item" href="#development">
-            <span class="number">05</span>
-            <span>
-                <strong>Skills & Development</strong>
-                <small>What I'm learning and building next</small>
-            </span>
-        </a>
+            <div class="branch">
+                <a class="leaf" href="#experience">
+                    <span class="leaf-number">CHAPTER 04</span>
+                    <strong>Work & Experience</strong>
+                    <small>Learning through real-world work</small>
+                </a>
+            </div>
 
-        <a class="timeline-item" href="#interests">
-            <span class="number">06</span>
-            <span>
-                <strong>Beyond Technology</strong>
-                <small>Sport, hobbies and life outside work</small>
-            </span>
-        </a>
+            <div class="branch">
+                <a class="leaf" href="#development">
+                    <span class="leaf-number">CHAPTER 05</span>
+                    <strong>Skills & Development</strong>
+                    <small>What I'm learning and building</small>
+                </a>
+            </div>
+
+            <div class="branch">
+                <a class="leaf" href="#interests">
+                    <span class="leaf-number">CHAPTER 06</span>
+                    <strong>Beyond Technology</strong>
+                    <small>Sport, hobbies and life outside work</small>
+                </a>
+            </div>
+
+        </div>
     </div>
 
     <section class="detail" id="about">
@@ -197,18 +306,18 @@
             experimenting with different tools and finding ways technology
             can help businesses work smarter.
         </p>
-        <a class="back" href="#top">↑ Back to my journey</a>
+        <a class="back" href="#top">↑ Back to the beginning</a>
     </section>
 
     <section class="detail" id="university">
         <h2>02 — University</h2>
         <p>
-            I recently graduated from Bournemouth University with a
-            degree in Business Computing with Analytics with Honours.
-            My studies introduced me to data analysis, business intelligence,
+            I graduated from Bournemouth University with a degree in
+            Business Computing with Analytics with Honours. My studies
+            introduced me to data analysis, business intelligence,
             software development and the role technology plays in business.
         </p>
-        <a class="back" href="#top">↑ Back to my journey</a>
+        <a class="back" href="#top">↑ Back to the beginning</a>
     </section>
 
     <section class="detail" id="projects">
@@ -220,13 +329,11 @@
             suppliers, I explored supplier performance, risk indicators
             and ways to present data to support business decisions.
         </p>
-
         <p>
             The project helped me develop my skills in data visualisation,
             analysis and presenting information in a practical format.
         </p>
-
-        <a class="back" href="#top">↑ Back to my journey</a>
+        <a class="back" href="#top">↑ Back to the beginning</a>
     </section>
 
     <section class="detail" id="experience">
@@ -246,13 +353,11 @@
             organisation, communication and teamwork skills while balancing
             employment with my studies and career development.
         </p>
-
-        <a class="back" href="#top">↑ Back to my journey</a>
+        <a class="back" href="#top">↑ Back to the beginning</a>
     </section>
 
     <section class="detail" id="development">
         <h2>05 — Skills & Development</h2>
-
         <p><strong>Technical skills</strong></p>
         <p>Python · Power BI · Excel · C# · GitHub · Data Analytics</p>
 
@@ -262,8 +367,7 @@
             data analytics and cybersecurity, while building my GitHub
             portfolio and exploring new technologies.
         </p>
-
-        <a class="back" href="#top">↑ Back to my journey</a>
+        <a class="back" href="#top">↑ Back to the beginning</a>
     </section>
 
     <section class="detail" id="interests">
@@ -273,13 +377,15 @@
             running and keeping active. I like learning new skills,
             challenging myself and spending time with friends.
         </p>
-
-        <a class="back" href="#top">↑ Back to my journey</a>
+        <a class="back" href="#top">↑ Back to the beginning</a>
     </section>
 
     <section class="detail" id="contact">
         <h2>Get in Touch</h2>
-        <p>I'm always interested in connecting with people in technology, analytics and AI.</p>
+        <p>
+            I'm always interested in connecting with people in technology,
+            analytics and AI.
+        </p>
         <p>
             <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             |
