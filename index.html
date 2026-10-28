@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jack Burns | Data & Technology</title>
+    <title>Jack Burns | My Journey</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,69 +13,286 @@
             margin: 0;
             line-height: 1.6;
         }
+
         header {
             background: #14213d;
             color: white;
             text-align: center;
             padding: 60px 20px;
         }
-        section {
-            max-width: 800px;
-            margin: 30px auto;
+
+        header p {
+            margin: 8px 0;
+        }
+
+        .intro {
+            max-width: 650px;
+            margin: 20px auto 0;
+        }
+
+        .timeline {
+            max-width: 750px;
+            margin: 35px auto;
             padding: 25px;
             background: white;
             border-radius: 10px;
         }
-        h2 { color: #14213d; }
-        a { color: #0077cc; }
+
+        h2 {
+            color: #14213d;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            margin: 12px 0;
+            border: 1px solid #e0e4e8;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #222;
+            transition: 0.2s;
+        }
+
+        .timeline-item:hover {
+            border-color: #0077cc;
+            background: #f7faff;
+            transform: translateX(4px);
+        }
+
+        .number {
+            background: #14213d;
+            color: white;
+            min-width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .timeline-item strong {
+            display: block;
+            color: #14213d;
+        }
+
+        .timeline-item small {
+            color: #666;
+        }
+
+        section.detail {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            scroll-margin-top: 20px;
+        }
+
+        a {
+            color: #0077cc;
+        }
+
+        .back {
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 40px 15px;
+            }
+
+            .timeline, section.detail {
+                margin: 20px 12px;
+                padding: 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<header>
+<header id="top">
     <h1>Jack Burns</h1>
     <p>Business Computing & Analytics Graduate</p>
     <p>Interested in Data Analytics, AI and Cybersecurity</p>
+
+    <div class="intro">
+        <p>
+            Welcome to my journey so far. Explore the experiences,
+            projects and interests that have shaped my journey into technology.
+        </p>
+    </div>
 </header>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        I'm passionate about technology, data and discovering new ways
-        to solve problems. I enjoy learning new skills, experimenting
-        with different tools and building projects on GitHub to turn
-        ideas into reality. I'm particularly interested in data analytics,
-        AI and how technology can make businesses work smarter.
-    </p>
-</section>
+<main>
 
-<section>
-    <h2>Projects</h2>
-    <h3>Supply IQ</h3>
-    <p>
-        A Power BI supplier-risk dashboard developed as my
-        university dissertation to explore supplier performance
-        and help businesses make data-driven decisions.
-    </p>
-</section>
+    <div class="timeline">
+        <h2>My Journey</h2>
+        <p>Select a chapter to explore it in more detail.</p>
 
-<section>
-    <h2>Technical Skills</h2>
-    <p>Python · Power BI · Excel · C# · GitHub · Data Analytics</p>
-</section>
+        <a class="timeline-item" href="#about">
+            <span class="number">01</span>
+            <span>
+                <strong>About Me</strong>
+                <small>My interests and what motivates me</small>
+            </span>
+        </a>
 
-<section>
-    <h2>Professional Development</h2>
-    <p>Microsoft Learn — Data Analytics and Cybersecurity</p>
-</section>
+        <a class="timeline-item" href="#university">
+            <span class="number">02</span>
+            <span>
+                <strong>University</strong>
+                <small>Business Computing & Analytics at Bournemouth</small>
+            </span>
+        </a>
 
-<section>
-    <h2>Contact</h2>
-    <p>
-        <a href="https://www.linkedin.com/">LinkedIn</a> |
-        <a href="https://github.com/">GitHub</a>
-    </p>
-</section>
+        <a class="timeline-item" href="#projects">
+            <span class="number">03</span>
+            <span>
+                <strong>Projects</strong>
+                <small>Turning ideas into practical solutions</small>
+            </span>
+        </a>
+
+        <a class="timeline-item" href="#experience">
+            <span class="number">04</span>
+            <span>
+                <strong>Work & Experience</strong>
+                <small>Learning through real-world experience</small>
+            </span>
+        </a>
+
+        <a class="timeline-item" href="#development">
+            <span class="number">05</span>
+            <span>
+                <strong>Skills & Development</strong>
+                <small>What I'm learning and building next</small>
+            </span>
+        </a>
+
+        <a class="timeline-item" href="#interests">
+            <span class="number">06</span>
+            <span>
+                <strong>Beyond Technology</strong>
+                <small>Sport, hobbies and life outside work</small>
+            </span>
+        </a>
+    </div>
+
+    <section class="detail" id="about">
+        <h2>01 — About Me</h2>
+        <p>
+            I'm passionate about technology, data and discovering new
+            ways to solve problems. I enjoy learning new skills,
+            experimenting with different tools and finding ways technology
+            can help businesses work smarter.
+        </p>
+        <a class="back" href="#top">↑ Back to my journey</a>
+    </section>
+
+    <section class="detail" id="university">
+        <h2>02 — University</h2>
+        <p>
+            I recently graduated from Bournemouth University with a
+            degree in Business Computing with Analytics with Honours.
+            My studies introduced me to data analysis, business intelligence,
+            software development and the role technology plays in business.
+        </p>
+        <a class="back" href="#top">↑ Back to my journey</a>
+    </section>
+
+    <section class="detail" id="projects">
+        <h2>03 — Projects</h2>
+
+        <h3>Supply Cube</h3>
+        <p>
+            My final-year dissertation project involved developing a
+            Power BI supplier-risk dashboard. Using a dataset of fictional
+            suppliers, I explored supplier performance, risk indicators
+            and ways to present data to support business decisions.
+        </p>
+
+        <p>
+            The project helped me develop my skills in data visualisation,
+            analysis and presenting information in a practical format.
+        </p>
+
+        <a class="back" href="#top">↑ Back to my journey</a>
+    </section>
+
+    <section class="detail" id="experience">
+        <h2>04 — Work & Experience</h2>
+
+        <h3>Bytes Software Services</h3>
+        <p>
+            During a two-week internship, I gained insight into different
+            areas of a technology business, including development,
+            cybersecurity and design. I also worked on a project involving
+            a dashboard to track GitHub tickets.
+        </p>
+
+        <h3>Garden Maintenance</h3>
+        <p>
+            My work has helped me develop practical problem-solving,
+            organisation, communication and teamwork skills while balancing
+            employment with my studies and career development.
+        </p>
+
+        <a class="back" href="#top">↑ Back to my journey</a>
+    </section>
+
+    <section class="detail" id="development">
+        <h2>05 — Skills & Development</h2>
+
+        <p><strong>Technical skills</strong></p>
+        <p>Python · Power BI · Excel · C# · GitHub · Data Analytics</p>
+
+        <p><strong>Professional development</strong></p>
+        <p>
+            I'm using Microsoft Learn to develop my understanding of
+            data analytics and cybersecurity, while building my GitHub
+            portfolio and exploring new technologies.
+        </p>
+
+        <a class="back" href="#top">↑ Back to my journey</a>
+    </section>
+
+    <section class="detail" id="interests">
+        <h2>06 — Beyond Technology</h2>
+        <p>
+            Outside of technology, I enjoy football, golf, padel,
+            running and keeping active. I like learning new skills,
+            challenging myself and spending time with friends.
+        </p>
+
+        <a class="back" href="#top">↑ Back to my journey</a>
+    </section>
+
+    <section class="detail" id="contact">
+        <h2>Get in Touch</h2>
+        <p>I'm always interested in connecting with people in technology, analytics and AI.</p>
+        <p>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            |
+            <a href="https://github.com/jackoliverburns" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>Jack Burns · My Journey into Technology</p>
+</footer>
 
 </body>
 </html>
